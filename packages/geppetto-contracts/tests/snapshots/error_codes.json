@@ -1,0 +1,137 @@
+{
+  "IMPORT_DIMENSION_BASIS_REQUIRED": {
+    "params": [],
+    "severity": "ERROR"
+  },
+  "IMPORT_EDGES_MISSING": {
+    "params": [
+      "row_index"
+    ],
+    "severity": "WARNING"
+  },
+  "IMPORT_EDGE_COUNT_AMBIGUOUS": {
+    "params": [
+      "row_index",
+      "edge_count"
+    ],
+    "severity": "WARNING"
+  },
+  "IMPORT_MATERIAL_UNMAPPED": {
+    "params": [
+      "row_index",
+      "material_ref"
+    ],
+    "severity": "ERROR"
+  },
+  "IMPORT_NON_RECTANGULAR_OUTLINE": {
+    "params": [
+      "row_index"
+    ],
+    "severity": "ERROR"
+  },
+  "IMPORT_ROW_INVALID": {
+    "params": [
+      "row_index"
+    ],
+    "severity": "ERROR"
+  },
+  "IMPORT_UNKNOWN_LAYER": {
+    "params": [
+      "layer"
+    ],
+    "severity": "WARNING"
+  },
+  "MATERIAL_CURRENCY_MISMATCH": {
+    "params": [
+      "material_code",
+      "currency",
+      "base_currency"
+    ],
+    "severity": "WARNING"
+  },
+  "MATERIAL_TYPE_IMMUTABLE": {
+    "params": [
+      "current_type",
+      "requested_type"
+    ],
+    "severity": "ERROR"
+  },
+  "PART_EXCEEDS_SHEET": {
+    "params": [
+      "part_label",
+      "sheet_length_um"
+    ],
+    "severity": "ERROR"
+  },
+  "PART_FINISHED_ASSUMED_FROM_RAW": {
+    "params": [
+      "part_label"
+    ],
+    "severity": "WARNING"
+  },
+  "PART_RAW_DIMENSION_NON_POSITIVE": {
+    "params": [
+      "part_label",
+      "raw_length_um",
+      "raw_width_um"
+    ],
+    "severity": "ERROR"
+  },
+  "PART_ROTATION_CONFLICTS_GRAIN": {
+    "params": [
+      "part_label",
+      "rotation",
+      "grain"
+    ],
+    "severity": "ERROR"
+  },
+  "SOLVER_AREA_CONSERVATION": {
+    "params": [
+      "sheet_index"
+    ],
+    "severity": "ERROR"
+  },
+  "SOLVER_KERF_MISSING": {
+    "params": [
+      "sheet_index"
+    ],
+    "severity": "ERROR"
+  },
+  "SOLVER_NONDETERMINISTIC": {
+    "params": [
+      "seed"
+    ],
+    "severity": "ERROR"
+  },
+  "SOLVER_NOT_GUILLOTINE": {
+    "params": [
+      "sheet_index"
+    ],
+    "severity": "ERROR"
+  },
+  "SOLVER_OUT_OF_BOUNDS": {
+    "params": [
+      "sheet_index"
+    ],
+    "severity": "ERROR"
+  },
+  "SOLVER_OVERLAP": {
+    "params": [
+      "sheet_index"
+    ],
+    "severity": "ERROR"
+  },
+  "SOLVER_PART_COUNT_MISMATCH": {
+    "params": [
+      "expected",
+      "actual"
+    ],
+    "severity": "ERROR"
+  },
+  "SOLVER_ROTATION_VIOLATION": {
+    "params": [
+      "sheet_index"
+    ],
+    "severity": "ERROR"
+  }
+}

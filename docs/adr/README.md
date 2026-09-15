@@ -65,3 +65,4 @@ Tüm `⚠️ DOĞRULANMADI` işaretlerinin toplu listesi. Kapanınca ilgili dok�
 | V25 | Çevrimdışı tolerans kapsamı | target-users.md | Ürün kararı |
 | V26 | Yazı tipi lisansı ve Türkçe glif | design-direction.md §1 | Seçimde |
 | V27 | Manuel yerleşim düzeltmede giyotin doğrulaması | design-direction.md §5 | İlk implementasyon |
+| V28 | µm/µm²/minor değerlerinin API'de JS güvenli tam sayı sınırında (2⁵³−1) kalması; toplu işte toplam alan (≈1500 plaka) sınırı aşabilir | `geppetto_domain/units.py`, ADR-0002 | Bölüm 4 metrikleri ve bölüm 5.9 üretilmiş TS istemcisinde ölçüm |

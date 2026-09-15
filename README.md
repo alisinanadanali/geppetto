@@ -6,8 +6,8 @@ Aylık abonelik; Türkiye'de başlar, çok dilli (tr/en) ve uluslararası. CNC'l
 
 ## Durum
 
-2026-09-15: repo iskeleti hazır (todo bölüm 1). Paket ve uygulama dizinleri, uv/pnpm workspace,
-lint/tip/import-linter/test hattı, docker-compose ve CI çalışıyor; iş mantığı henüz yok.
+2026-09-15: repo iskeleti (todo bölüm 1) ve sözleşmeler (bölüm 2) hazır: hata kodu kataloğu,
+µm/para tipleri, domain enum'ları ve `PartListDocument v1` şeması. İş kuralları bölüm 3'te başlar.
 Faz planı: `docs/product/phases.md`; adımlar: `todo.md`.
 
 ## Fazlar

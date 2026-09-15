@@ -48,13 +48,15 @@ PartListRow
   width_um: int
   thickness_um: int | null
   qty: int
-  edges: {L1: EdgeRef|null, L2, W1, W2}   # EdgeRef = {material_ref, material_id|null}
+  edges: {L1: EdgeBandRef|null, L2, W1, W2}   # EdgeBandRef = {material_ref, material_id|null}
   rotation: NONE|ROT_180|ROT_90|ANY | null
   grain: NONE|ALONG_LENGTH|ALONG_WIDTH | null
   project_ref: str | null                  # kaynaktaki proje/dolap adı
   notes: str | null
   warnings: [{code, params}]               # IMPORT_* hata kodları
 ```
+
+Ad notu (2026-09-15, K2): kenar enum'u `EdgeRef` (`L1|L2|W1|W2`, glossary.md); kenara vurulan bant nesnesi `EdgeBandRef`. Kod: `geppetto_contracts.part_list`.
 
 Hedef alanlar `column_map`'te: `label, material_ref, length, width, thickness, qty, edge_L1, edge_L2, edge_W1, edge_W2, edge_count, grain, project_ref, notes`.
 

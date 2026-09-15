@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Sözleşmeler: hata kodu kataloğu, ortak tipler, PartListDocument, API DTO'ları (ADR-0010)."
 requires-python = ">=3.12"
 dependencies = [
+  "geppetto-domain",
   "pydantic>=2.11",
 ]
 

@@ -38,10 +38,10 @@ Kaynak: `docs/engineering/repo-structure.md`, ADR-0001, ADR-0014
 
 Kaynak: ADR-0010, `docs/engineering/i18n.md`, `docs/integration/import-profiles.md` §3
 
-- [ ] 2.1 `error_codes.py`: tek enum; önekler `PART_ STOCK_ IMPORT_ SOLVER_ AUTH_ TENANT_ MATERIAL_ MACHINE_ EXPORT_`
-- [ ] 2.2 Ortak tipler: `Micron = Annotated[int]`, `Money(minor, currency)`, enum'lar (`MaterialType, Rotation, Grain, EdgeRef, FaceRef, MovementType, DimensionBasis`)
-- [ ] 2.3 `PartListDocument v1` + `PartListRow` (`dimension_basis` zorunlu, varsayılan yok)
-- [ ] 2.4 Şema testleri: geçersiz `dimension_basis` reddi, µm tam sayı zorunluluğu
+- [x] (2026-09-15) 2.1 `error_codes.py`: tek enum; önekler `PART_ STOCK_ IMPORT_ SOLVER_ AUTH_ TENANT_ MATERIAL_ MACHINE_ EXPORT_`
+- [x] (2026-09-15) 2.2 Ortak tipler (tanım `geppetto-domain`, contracts yeniden dışa aktarır; L-008): `Micron = Annotated[int]`, `Money(minor, currency)`, enum'lar (`MaterialType, Rotation, Grain, EdgeRef, FaceRef, MovementType, DimensionBasis`)
+- [x] (2026-09-15) 2.3 `PartListDocument v1` + `PartListRow` (`dimension_basis` zorunlu, varsayılan yok)
+- [x] (2026-09-15) 2.4 Şema testleri: geçersiz `dimension_basis` reddi, µm tam sayı zorunluluğu (+ katalog/JSON şema snapshot, round-trip; domain kod sabiti testi bölüm 3'te aktifleşir)
 
 ## 3. Domain çekirdeği (`geppetto-domain`)
 

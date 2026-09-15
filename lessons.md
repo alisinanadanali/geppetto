@@ -82,6 +82,22 @@ Bu dosya projede yapılan hataların, kök nedenlerinin ve düzeltme adımların
 **Kural:** Test dizinlerine `__init__.py` konmaz; testler birbirini import etmez, paylaşılan kod `conftest.py` veya bir src paketinde durur.
 **Bağlantı:** todo 1.2, 1.8; ADR-0016
 
+### L-008 · 2026-09-15 · Ortak tipler bağımlılık yönüne ters pakete yazılmıştı
+**Alan:** doküman
+**Belirti:** todo 2.2 `Micron`, `Money` ve enum'ları (`Rotation`, `EdgeRef` …) `geppetto-contracts` içine koyuyordu; bölüm 3'te domain varlıkları aynı tiplere ihtiyaç duyar ama `contracts → domain` yönü domain'in contracts'ı import etmesini yasaklar. Aynı sorun `repo-structure.md`'deki "domain errors.py contracts ile aynı enum'a bağlanır" cümlesinde de vardı.
+**Kök neden:** Todo adımları paket adına göre yazıldı; tipin hangi paketlerce kullanılacağı bağımlılık okuyla karşılaştırılmadı.
+**Düzeltme:** Tipler `geppetto_domain/units.py` ve `enums.py` içinde; `geppetto_contracts/types.py` yeniden dışa aktarır (K1). Domain hata kodları `str` sabiti, contracts testi katalogda olduklarını doğrular (K3).
+**Kural:** Yeni ortak tip veya enum yazmadan önce "bunu kim import edecek" listelenir; listede domain varsa tanım domain'dedir.
+**Bağlantı:** ADR-0001, ADR-0010; todo 2.2, 3.1
+
+### L-009 · 2026-09-15 · Aynı ad iki farklı kavrama verilmişti (`EdgeRef`)
+**Alan:** doküman
+**Belirti:** glossary.md `EdgeRef` = `L1|L2|W1|W2` enum'u; import-profiles.md §3 `EdgeRef` = `{material_ref, material_id}` bant nesnesi.
+**Kök neden:** Dokümanlar ayrı oturumlarda yazıldı; ad çakışması taranmadı.
+**Düzeltme:** Enum `EdgeRef` kaldı; bant nesnesi `EdgeBandRef` (K2); import-profiles.md düzeltildi.
+**Kural:** Yeni tip adı kullanmadan önce `docs/` içinde aynı ad aranır; aynı ad farklı yapıyla geçiyorsa kod yazılmadan önce çözülür.
+**Bağlantı:** ADR-0006, ADR-0012; glossary.md
+
 ---
 
 ## 2. Beklenen tuzaklar (henüz olmadı, olursa kayıt açılır)

@@ -14,10 +14,12 @@ geppetto/
 │   ├── geppetto-domain/
 │   │   ├── pyproject.toml         # bağımlılık: pydantic yalnızca
 │   │   ├── src/geppetto_domain/
+│   │   │   ├── units.py           # Micron, Money, BasisPoint (contracts yeniden dışa aktarır)
+│   │   │   ├── enums.py           # Rotation, Grain, EdgeRef, MovementType … (contracts yeniden dışa aktarır)
 │   │   │   ├── dimensions.py      # derive_raw_dimensions()
 │   │   │   ├── stock.py           # projeksiyon ve durum geçiş kuralları
 │   │   │   ├── parts.py, materials.py, machines.py, cutjobs.py
-│   │   │   └── errors.py          # domain hata kodları (contracts ile aynı enum'a bağlanır)
+│   │   │   └── errors.py          # domain hata kodu sabitleri; contracts testi ErrorCode'da olduklarını doğrular
 │   │   └── tests/
 │   ├── geppetto-solver/
 │   │   ├── pyproject.toml         # bağımlılık: pydantic; or-tools [extra]
@@ -29,8 +31,9 @@ geppetto/
 │   │   └── tests/                 # Hypothesis property testleri
 │   ├── geppetto-contracts/
 │   │   └── src/geppetto_contracts/
+│   │       ├── types.py           # domain units/enums yeniden dışa aktarımı
 │   │       ├── part_list.py       # PartListDocument v1
-│   │       ├── api/               # request/response DTO'ları
+│   │       ├── api/               # request/response DTO'ları; errors.py = ErrorDetail/ErrorResponse
 │   │       └── error_codes.py     # tek katalog
 │   ├── geppetto-ingest/
 │   │   └── src/geppetto_ingest/   # csv.py, xlsx.py, dxf.py, profile.py
@@ -73,6 +76,7 @@ apps/api, apps/worker  →  geppetto-ingest, geppetto-export, geppetto-contracts
 apps/worker            →  geppetto-solver
 geppetto-solver        →  (yalnızca kendi tipleri; geppetto-domain YASAK)
 geppetto-domain        →  hiçbir iç paket; dış: pydantic
+geppetto-contracts     →  geppetto-domain (ortak tipler ve enum'lar domain'de doğar, contracts dışa aktarır)
 apps/web               →  yalnızca üretilmiş OpenAPI istemcisi
 ```
 
