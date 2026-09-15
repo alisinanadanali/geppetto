@@ -1,0 +1,22 @@
+[project]
+name = "geppetto-worker"
+version = "0.1.0"
+description = "arq worker: run_optimization, build_exports. Solver'ı yalnızca bu uygulama çağırır."
+requires-python = ">=3.12"
+dependencies = [
+  "geppetto-contracts",
+  "geppetto-domain",
+  "geppetto-solver",
+  "geppetto-export",
+  "arq>=0.26",
+  "sqlalchemy[asyncio]>=2.0.41",
+  "asyncpg>=0.30",
+  "pydantic-settings>=2.10",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/geppetto_worker"]

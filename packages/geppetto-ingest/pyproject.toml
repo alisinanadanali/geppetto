@@ -1,0 +1,16 @@
+[project]
+name = "geppetto-ingest"
+version = "0.1.0"
+description = "Giriş adaptörleri: CSV/XLSX/DXF parser ve eşleme profili uygulama (ADR-0012)."
+requires-python = ">=3.12"
+dependencies = [
+  "geppetto-contracts",
+  "geppetto-domain",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/geppetto_ingest"]

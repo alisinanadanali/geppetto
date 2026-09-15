@@ -1,0 +1,70 @@
+# CI: lint + tip + import-linter + test (Python), lint + i18n + build (web).
+# Test setleri ve süre hedefleri: docs/engineering/testing-strategy.md §6.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: python (lint, mypy, import-linter, pytest)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Sync workspace
+        run: uv sync --locked
+
+      - name: ruff (lint + format)
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+      - name: mypy
+        run: uv run mypy
+
+      - name: import-linter (bağımlılık yönü, ADR-0001 / ADR-0011)
+        run: uv run lint-imports
+
+      - name: pytest (domain, solver, contracts, apps; RLS Docker ile)
+        run: uv run pytest -q
+
+  web:
+    name: web (lint, i18n, typecheck, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: eslint (çıplak metin yasak, ADR-0010)
+        run: pnpm lint
+
+      - name: i18n eksik anahtar kontrolü
+        run: pnpm i18n:check
+
+      - name: typecheck + build
+        run: pnpm build

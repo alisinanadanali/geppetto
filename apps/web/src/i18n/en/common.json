@@ -1,0 +1,9 @@
+{
+  "app": {
+    "name": "Geppetto",
+    "tagline": "Stock, cut plans and offcut management for woodworking shops"
+  },
+  "status": {
+    "skeleton": "Repository skeleton ready; modules are added throughout Phase 0."
+  }
+}

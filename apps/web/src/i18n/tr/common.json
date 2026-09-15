@@ -1,0 +1,9 @@
+{
+  "app": {
+    "name": "Geppetto",
+    "tagline": "Marangozhane için stok, kesim planı ve artık yönetimi"
+  },
+  "status": {
+    "skeleton": "Repo iskeleti hazır; modüller Faz 0 boyunca eklenir."
+  }
+}

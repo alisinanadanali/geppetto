@@ -1,0 +1,15 @@
+[project]
+name = "geppetto-contracts"
+version = "0.1.0"
+description = "Sözleşmeler: hata kodu kataloğu, ortak tipler, PartListDocument, API DTO'ları (ADR-0010)."
+requires-python = ">=3.12"
+dependencies = [
+  "pydantic>=2.11",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/geppetto_contracts"]

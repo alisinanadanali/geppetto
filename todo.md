@@ -25,14 +25,14 @@ Kaynak: `docs/adr/README.md` açık doğrulamalar V1–V3, V7, V10, V13, V14, V2
 
 Kaynak: `docs/engineering/repo-structure.md`, ADR-0001, ADR-0014
 
-- [ ] 1.1 `git init`, ilk commit (dokümanlar)
-- [ ] 1.2 uv workspace kökü: `pyproject.toml`, ortak ruff/mypy/pytest ayarı
-- [ ] 1.3 Paket iskeletleri: `packages/geppetto-{domain,solver,contracts,ingest,export}` (boş `src/`, `tests/`, kendi `pyproject.toml`)
-- [ ] 1.4 Uygulama iskeletleri: `apps/{api,worker}`; `apps/web` (Vite + React + TS + pnpm); `apps/agent/README.md`
-- [ ] 1.5 `infra/docker-compose.yml`: postgres, redis, minio
-- [ ] 1.6 import-linter kuralları: bağımlılık yönü (domain/solver → IO kütüphanesi yasak, solver → domain yasak)
-- [ ] 1.7 CI: lint + test + import-linter; PR şablonunda "ilgili ADR" alanı
-- [ ] 1.8 `tests/golden/`, `tests/rls/` dizinleri ve README
+- [x] (2026-09-15) 1.1 `git init`, ilk commit (dokümanlar)
+- [x] (2026-09-15) 1.2 uv workspace kökü: `pyproject.toml`, ortak ruff/mypy/pytest ayarı
+- [x] (2026-09-15) 1.3 Paket iskeletleri: `packages/geppetto-{domain,solver,contracts,ingest,export}` (boş `src/`, `tests/`, kendi `pyproject.toml`)
+- [x] (2026-09-15) 1.4 Uygulama iskeletleri: `apps/{api,worker}`; `apps/web` (Vite + React + TS + pnpm; react-i18next + `no-literal-string` lint + eksik anahtar kontrolü öne alındı); `apps/agent/README.md`
+- [x] (2026-09-15) 1.5 `infra/docker-compose.yml`: postgres, redis, minio (+ rol init: migrate/app/system, ADR-0007)
+- [x] (2026-09-15) 1.6 import-linter kuralları: bağımlılık yönü (domain/solver → IO kütüphanesi yasak, solver → domain yasak)
+- [x] (2026-09-15) 1.7 CI: lint + test + import-linter; PR şablonunda "ilgili ADR" alanı
+- [x] (2026-09-15) 1.8 `tests/golden/`, `tests/rls/` dizinleri ve README
 
 ## 2. Sözleşmeler (`geppetto-contracts`)
 

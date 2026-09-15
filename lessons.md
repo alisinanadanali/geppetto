@@ -74,6 +74,14 @@ Bu dosya projede yapılan hataların, kök nedenlerinin ve düzeltme adımların
 **Kural:** Her kapsam maddesi için "hangi tabloya yazılır" sorusu cevaplanır.
 **Bağlantı:** data-model.md, phases.md §Faz 0 #8
 
+### L-007 · 2026-09-15 · Paket başına `tests/` dizini pytest'te ad çakıştı
+**Alan:** süreç
+**Belirti:** Kökten `pytest` koşunca `ModuleNotFoundError: tests.test_smoke`; yedi paketin `tests/__init__.py` dosyası aynı `tests` modül adını paylaşıyordu.
+**Kök neden:** repo-structure.md her pakete kendi `tests/` dizinini verir; pytest'in varsayılan `prepend` import modu aynı adlı paketleri ayıramaz.
+**Düzeltme:** `--import-mode=importlib` (kök pyproject) ve test dizinlerinde `__init__.py` yok. `tests/rls/conftest.py` gibi paylaşılan fixture'lar conftest ile taşınır.
+**Kural:** Test dizinlerine `__init__.py` konmaz; testler birbirini import etmez, paylaşılan kod `conftest.py` veya bir src paketinde durur.
+**Bağlantı:** todo 1.2, 1.8; ADR-0016
+
 ---
 
 ## 2. Beklenen tuzaklar (henüz olmadı, olursa kayıt açılır)

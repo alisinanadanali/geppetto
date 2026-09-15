@@ -6,7 +6,9 @@ Aylık abonelik; Türkiye'de başlar, çok dilli (tr/en) ve uluslararası. CNC'l
 
 ## Durum
 
-Yalnızca mimari dokümantasyon (2026-09-13). Uygulama kodu henüz yok. Faz planı: `docs/product/phases.md`.
+2026-09-15: repo iskeleti hazır (todo bölüm 1). Paket ve uygulama dizinleri, uv/pnpm workspace,
+lint/tip/import-linter/test hattı, docker-compose ve CI çalışıyor; iş mantığı henüz yok.
+Faz planı: `docs/product/phases.md`; adımlar: `todo.md`.
 
 ## Fazlar
 
@@ -35,4 +37,28 @@ FastAPI + SQLAlchemy + Alembic · PostgreSQL (RLS) · React + Vite + TypeScript 
 
 ## Kurulum
 
-Kod gelince yazılacak. Planlanan: `infra/docker-compose.yml` (postgres, redis, minio) + `uv sync` + `pnpm install`.
+Gereksinimler: Python ≥ 3.12, uv, Node 24, pnpm 10, Docker.
+
+```
+cp .env.example .env
+docker compose -f infra/docker-compose.yml --env-file .env up -d   # postgres, redis, minio
+uv sync                                                             # tüm Python workspace
+pnpm install                                                        # apps/web
+```
+
+Doğrulama (CI ile aynı):
+
+```
+uv run ruff check . && uv run ruff format --check .
+uv run mypy
+uv run lint-imports          # bağımlılık yönü (ADR-0001, ADR-0011)
+uv run pytest                # -m "not rls" ile Docker'sız
+pnpm lint && pnpm i18n:check && pnpm build
+```
+
+Geliştirme: `uv run uvicorn geppetto_api.main:app --reload --app-dir apps/api/src` ·
+`uv run arq geppetto_worker.settings.WorkerSettings` · `pnpm --filter @geppetto/web dev`.
+
+Postgres ilk açılışta üç rol oluşturur (ADR-0007): `geppetto_migrate` (şema sahibi, yalnızca Alembic),
+`geppetto_app` (çalışma zamanı, sahip değil → RLS uygulanır), `geppetto_system` (tenant'sız görevler).
+MinIO varsayılan 9000 portu doluysa `.env` içinde `MINIO_PORT` değiştirilir.

@@ -73,4 +73,4 @@ Emin olmadığın her nokta `> ⚠️ DOĞRULANMADI: <ne> — <nasıl doğrulan�
 
 ## Durum
 
-2026-09-13: yalnızca dokümantasyon. Uygulama kodu yok. Faz 0 kapsamı `docs/product/phases.md`.
+2026-09-15: repo iskeleti hazır (todo bölüm 1): workspace, lint/mypy/import-linter/test hattı, docker-compose (rol init), CI. İş mantığı yok; sıradaki adım bölüm 2 (`geppetto-contracts`). Faz 0 kapsamı `docs/product/phases.md`.

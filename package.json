@@ -1,0 +1,12 @@
+{
+  "name": "geppetto",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.34.5",
+  "scripts": {
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "build": "pnpm -r build",
+    "i18n:check": "pnpm -r i18n:check"
+  }
+}

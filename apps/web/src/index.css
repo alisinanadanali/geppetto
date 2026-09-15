@@ -1,0 +1,5 @@
+/* Geçici. Tema ve token'lar bölüm 7.1'de design/tokens.ts'den gelir; burada renk/px yazılmaz. */
+:root {
+  font-family: system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
